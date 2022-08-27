@@ -1,0 +1,13 @@
+.latest-product>.latest-product__item__text>.fa-shopping-cart {
+    font-size: 40px;
+}
+
+.product__discount {
+    width: 80%;
+    margin-left: 200px;
+}
+
+.buyProduct {
+    border-width: 1px;
+    color: black;
+}

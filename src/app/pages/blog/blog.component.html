@@ -1,0 +1,78 @@
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" *ngFor="let item of banner" [style]="{'background-image': 'url(' + item?.img + ')'}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Blog</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./home.html">Home</a>
+                        <span>Blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Blog Section Begin -->
+<section class="blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__item ">
+                        <h4>Recent News</h4>
+                        <div class="blog__sidebar__recent__item row" style="margin-bottom: 50px;" *ngFor="let p of recentBlog" (click)="goBlogDetails(p)">
+                            <div class="blog__sidebar__recent__item__pic col-lg-6">
+                                <img src="{{p.newsImage}}" alt="">
+                            </div>
+                            <div class="blog__sidebar__recent__item__text col-lg-5">
+                                <h6>{{p.newsTitle}}</h6>
+                                <span>{{p.newsCreatAt}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let c of blogs" (click)="goBlogDetails(c)">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{c?.newsImage}}" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i>{{c?.newsCreatAt }}</li>
+                                </ul>
+                                <h5><a>{{c?.newsTitle}}</a></h5>
+                                <p>{{c?.newsContent}}</p>
+                                <a class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <span class="page-item">
+                        <a class="page-link" (click)="changePageBlog(renderPageBlog.lastIndexOf(1))" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </span>
+                        <li class="page-item" *ngFor="let item of renderPageBlog" (click)="changePageBlog(item)">
+                            <span class="page-link">{{item}}</span>
+                        </li>
+                        <span class="page-item">
+                          <a class="page-link" (click)="changePageBlog(renderPageBlog.length)" routerLink="{$results->lastPage()}" aria-label="Next" >
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </span>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->

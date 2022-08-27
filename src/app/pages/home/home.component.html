@@ -1,0 +1,233 @@
+<!-- Hero Section End -->
+<div class="hero__item set-bg" *ngFor="let item of banner" [style]="{'background-image': 'url(' + item?.img + ')'}" style="width: 90%;
+margin-left: auto; margin-right: auto; margin-bottom: 50px;">
+    <div class="hero__text">
+        <span style="margin-top: 100px;">{{item?.name}}</span>
+        <h2>Vegetable <br />100% Organic</h2>
+        <p>Free Pickup and Delivery Available</p>
+        <a routerLink="/pages/shop-grid" class="primary-btn">SHOP NOW</a>
+    </div>
+</div>
+
+<div class="product__discount">
+    <div class="section-title product__discount__title">
+        <h2>Sale Off</h2>
+    </div>
+    <div class="row">
+        <div class="product__discount__slider owl-carousel col-lg-4" *ngFor="let p of shopGird" (click)="goDetails(p)">
+            <div class="product__discount__item">
+                <div class="product__discount__item__pic set-bg">
+                    <img src="{{p.productImage}}" alt="">
+                    <div class="product__discount__percent">-{{p.discount}}%</div>
+                    <ul class="product__item__pic__hover">
+                        <li><a href="javascrip:void(0)" (click)="buy($event, p)"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="product__discount__item__text">
+                    <span></span>
+                    <h5><a href="#">{{p.productName}}</a></h5>
+                    <div class="product__item__price">${{p.productPriceOut}}<span>${{p.productPriceOut}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <span class="page-item">
+  <a class="page-link"  (click)="changePageDis(renderPageDis.lastIndexOf(1))" aria-label="Previous">
+    <span aria-hidden="true">&laquo;</span>
+            </a>
+            </span>
+            <li class="page-item" *ngFor="let item of renderPageDis" (click)="changePageDis(item)">
+                <span class="page-link">{{item}}</span>
+            </li>
+            <span class="page-item">
+  <a class="page-link"  (click)="changePageDis(renderPageDis.length)" aria-label="Next">
+    <span aria-hidden="true">&raquo;</span>
+            </a>
+            </span>
+        </ul>
+    </nav>
+</div>
+
+
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Featured Product</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" (click)="filterProducts(0)">All</li>
+                        <li (click)="filterProducts(1)">Fresh Meat</li>
+                        <li (click)="filterProducts(2)">Vegetables</li>
+                        <li (click)="filterProducts(3)">Fresh Fruit</li>
+                        <li (click)="filterProducts(4)">Drink Fruits</li>
+                        <li (click)="filterProducts(6)">Fastfood</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row featured__filter">
+            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" *ngFor="let p of products" (click)="goProductDetails(p)">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <img src="{{p.productImage}}" alt="">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="javascrip:void(0)" (click)="buy($event, p)"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a>{{p.productName}}</a></h6>
+                        <h5 id="pPrice">${{p.productPriceOut}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav aria-label="Page navigation example" *ngIf="currentCategoryId===0">
+            <ul class="pagination">
+                <span class="page-item">
+            <a class="page-link" (click)="changePagePro(renderPagePro.lastIndexOf(1))" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+                </a>
+                </span>
+                <li class="page-item" *ngFor="let item of renderPagePro" (click)="changePagePro(item)">
+                    <span class="page-link">{{item}}</span>
+                </li>
+                <span class="page-item">
+            <a class="page-link" (click)="changePagePro(renderPagePro.length)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+                </a>
+                </span>
+            </ul>
+        </nav>
+    </div>
+</section>
+<!-- Featured Section End -->
+
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="assets/img/banner/banner-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="assets/img/banner/banner-2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Latest Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a class="latest-product__item" *ngFor="let p of latestProduct" (click)="goProductDetails(p)">
+                                <div class="latest-product__item__pic">
+                                    <img src="{{p.productImage}}" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{p.productName}}</h6>
+                                    <span>${{p.productPriceOut}}</span>
+                                    <a href="javascrip:void(0)" (click)="buy($event, p)">
+                                        <button class="buyProduct"> Buy</button>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Top Rated Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a class="latest-product__item" *ngFor="let p of rateProduct" (click)="goProductDetails(p)">
+                                <div class="latest-product__item__pic">
+                                    <img src="{{p.productImage}}" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{p.productName}}</h6>
+                                    <span>${{p.productPriceOut}}</span>
+                                    <a href="javascrip:void(0)" (click)="buy($event, p)">
+                                        <button class="buyProduct"> Buy</button>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Reviews Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a class="latest-product__item" *ngFor="let p of reviewProduct" (click)="goProductDetails(p)">
+                                <div class="latest-product__item__pic">
+                                    <img src="{{p.productImage}}" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{p.productName}}</h6>
+                                    <span>${{p.productPriceOut}}</span>
+                                    <a href="javascrip:void(0)" (click)="buy($event, p)">
+                                        <button class="buyProduct"> Buy</button>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Product Section End -->
+
+<!-- Blog Section Begin -->
+<section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title from-blog__title">
+                    <h2>From The Blog</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6" *ngFor="let c of blogs" (click)="goBlogDetails(c)">
+                <div class="blog__item">
+                    <div class="blog__item__pic">
+                        <img src="{{c?.newsImage}}" alt="">
+                    </div>
+                    <div class="blog__item__text">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i>{{c?.newsCreatAt }}</li>
+                        </ul>
+                        <h5><a>{{c?.newsTitle}}</a></h5>
+                        <p>{{c?.newsContent}}</p>
+                        <a class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->
