@@ -15,12 +15,12 @@ export interface Order {
 })
 export class ShopCartService {
 
-  private base_url:string  = 'http://localhost:1234/orderDetail';
+  private base_url:string  = 'http://localhost:1234/order';
 
   constructor(private http: HttpClient) { }
 
-  postProductToCart(product:any):Observable<any>{
-    return this.http.post(`${this.base_url}`, {product});
-  }
+  // getProductToCart(orderStatus: String): Observable<any> {
+  //   return this.http.get(`${this.base_url + '/find'}?orderStatus=${orderStatus}`);
+  // }
 
 }

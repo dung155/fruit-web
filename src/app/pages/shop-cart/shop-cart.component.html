@@ -33,32 +33,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let p of productCart; let i=index">
+                            <tr *ngFor="let p of orderDetails; index as i">
                                 <td class="shoping__cart__item">
-                                    <img src="{{p.product.productImage}}" alt="">
+                                    <img src="{{p.productImage}}" alt="">
                                     <h5>{{p.productName}}</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    ${{p.product.productPriceOut}}
+                                    ${{p.productPriceOut}}
                                 </td>
-                                <td class="shoping__cart__quantity">
+                                <!-- <td class="shoping__cart__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
                                             <input type="number" (change)="updateCart()" [(ngModel)]="p.quantity" name="quantity" value="{{p.quantity}}">
                                         </div>
                                     </div>
-                                </td>
+                                </td> -->
                                 <td class="shoping__cart__total">
-                                    ${{p.product.productPriceOut * p.quantity}}
+                                    ${{p.productPriceOut * p.quantity}}
                                 </td>
                                 <!-- <td class="shoping__cart__item__close">
                                     <span class="icon_close"></span>
                                 </td> -->
-                                <td>
+                                <!-- <td>
                                     <i (click)="deleteCart(i)" class="fa fa-trash"></i>
-                                </td>
+                                </td> -->
                             </tr>
-                            <tr *ngIf=" productCart.length == 0">
+                            <tr *ngIf=" orderDetails.length == 0">
                                 <td colspan="5">Chưa có sản phẩm nào trong giỏ</td>
                             </tr>
                         </tbody>
@@ -90,7 +90,6 @@
                     <ul>
                         <li>Total <span>{{order.totalPrice}}$</span></li>
                     </ul>
-                    <a (click)="checkout()" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

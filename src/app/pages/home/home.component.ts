@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit {
   currentPageDis = 0;
   pageSizeDis = 3;
 
+  khkajsd = 2;
+
   categories: any[] = [];
   products: any[] = [];
   totalPagesPro = 0;

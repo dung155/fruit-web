@@ -25,37 +25,19 @@ orderDetails: any;
     // console.log(this.loadCart);
   }
   async loadCart(){
-      this.order = await this.http
-      .get(`http://localhost:1234/order/find?orderStatus=${"WAITING"}`)
+      const dataOrder: any = await this.http
+      .get(`http://localhost:1234/order/find?orderStatus=${'WAITING'}`)
       .toPromise();
-      console.log('getOrder: ', this.order);
+      this.order = dataOrder[0];
+      this.orderDetails = this.order.orderDetails;
+      console.log('getOrder: ', this.order, dataOrder);
 
-      this.orderDetails = await this.http
-      .get(`http://localhost:1234/orderDetail/${this.order.id}`)
-      .toPromise();
-      console.log('orderDetail: ', this.orderDetails);
-
-    this.productCart = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts') || '{}') :[] ;
-      console.log(this.productCart);
-  }
-
-  updateCart(){
-    localStorage.setItem('carts', JSON.stringify(this.productCart));
-  }
-
-  deleteCart(index:number){
-    this.productCart.splice(index, 1);
-    localStorage.setItem('carts', JSON.stringify(this.productCart));
+      // this.orderDetails = await this.http
+      // .get(`http://localhost:1234/orderDetail/${this.order.id}`)
+      // .toPromise();
+      // console.log('orderDetail: ', this.orderDetails);
 
   }
 
-  checkout(){
-    const newOrder = {
-      products: JSON.stringify(this.productCart),
-      totalPrice: 0,
-      userId: 0
-    }
-
-  }
 
 }

@@ -11,7 +11,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(private loginService: LoginService ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('this.intercept:', this.intercept);
+    // console.log('this.intercept:', this.intercept);
     let tokenizedReq = req.clone({
       setHeaders : {
         Authorization: `Bearer ${this.loginService.getToken()}`

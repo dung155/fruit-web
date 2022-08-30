@@ -39,11 +39,9 @@ export class RegisterComponent implements OnInit {
 
     this.submited = true;
     if(!this.addUser.valid){
-      console.log('ccc');
 
       return false;
     }
-    console.log('bbbbb');
 
     console.log(this.addUser.value);
 

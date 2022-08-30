@@ -14,4 +14,7 @@ export class BlogDetailsService {
   }
   getall(): Observable<any>{
     return this.http.get('http://localhost:1234/blogDetail');
-  }}
+  }
+
+
+}
